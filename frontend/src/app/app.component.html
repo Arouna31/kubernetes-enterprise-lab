@@ -1,0 +1,60 @@
+<header class="topbar">
+  <div>
+    <p class="eyebrow">KUBERNETES ENTERPRISE LAB</p>
+    <h1>Booking Platform</h1>
+  </div>
+
+  <button type="button" (click)="refresh()" [disabled]="loading()">
+    {{ loading() ? 'Chargement…' : 'Rafraîchir' }}
+  </button>
+</header>
+
+<main>
+  <section class="hero">
+    <div>
+      <p class="eyebrow">PLATFORM DEMO</p>
+      <h2>Une application minimale pour manipuler Kube comme en entreprise.</h2>
+      <p>
+        Le métier reste volontairement simple. L'objectif est d'observer les pods,
+        services, rollouts, probes, incidents et politiques de sécurité.
+      </p>
+    </div>
+
+    <div class="instance-card">
+      <span>Backend instance</span>
+      <strong>{{ info()?.instance ?? 'non disponible' }}</strong>
+      <small>{{ info()?.environment ?? 'unknown' }} · {{ info()?.version ?? '-' }}</small>
+    </div>
+  </section>
+
+  @if (error()) {
+    <section class="error">{{ error() }}</section>
+  }
+
+  <section class="metrics">
+    <article>
+      <span>Hôtels</span>
+      <strong>{{ hotels().length }}</strong>
+    </article>
+    <article>
+      <span>Chambres</span>
+      <strong>{{ totalRooms() }}</strong>
+    </article>
+    <article>
+      <span>API</span>
+      <strong>{{ info() ? 'UP' : 'DOWN' }}</strong>
+    </article>
+  </section>
+
+  <section class="grid">
+    @for (hotel of hotels(); track hotel.id) {
+      <article class="hotel-card">
+        <span class="city">{{ hotel.city }}</span>
+        <h3>{{ hotel.name }}</h3>
+        <p>{{ hotel.rooms }} chambres disponibles</p>
+      </article>
+    } @empty {
+      <p>Aucun hôtel retourné par l'API.</p>
+    }
+  </section>
+</main>
