@@ -1,0 +1,25 @@
+apiVersion: networking.k8s.io/v1
+kind: Ingress
+metadata:
+  name: booking-ingress
+  namespace: booking-dev
+spec:
+  ingressClassName: traefik
+  rules:
+    - host: booking.local
+      http:
+        paths:
+          - path: /api
+            pathType: Prefix
+            backend:
+              service:
+                name: booking-api
+                port:
+                  number: 8080
+          - path: /
+            pathType: Prefix
+            backend:
+              service:
+                name: booking-frontend
+                port:
+                  number: 8080
