@@ -20,3 +20,8 @@ spec:
           image: kube-lab/booking-api:0.1.0
           ports:
             - containerPort: 8080
+          envFrom:
+            - configMapRef:
+                name: booking-api-config
+            - secretRef:
+                name: booking-api-secret
