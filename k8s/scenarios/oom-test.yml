@@ -1,0 +1,36 @@
+apiVersion: v1
+kind: Pod
+
+metadata:
+  name: oom-test
+  namespace: booking-dev
+  labels:
+    app: oom-test
+
+spec:
+  restartPolicy: Always
+
+  containers:
+    - name: memory-hog
+      image: python:3.12-alpine
+
+      resources:
+        requests:
+          memory: "32Mi"
+          cpu: "10m"
+
+        limits:
+          memory: "64Mi"
+          cpu: "100m"
+
+      command:
+        - python
+        - -c
+        - |
+          import time
+
+          print("Allocating 200 MiB...")
+          data = bytearray(200 * 1024 * 1024)
+
+          print("Allocation completed")
+          time.sleep(3600)
