@@ -27,11 +27,11 @@ The objective is not only to deploy workloads, but also to understand how they a
 | PLAT-002  | Deploy Booking API                | ✅ Completed | [Booking API Deployment](./labs/PLAT-002-booking-api-deployment.md) |
 | PLAT-003  | Deploy Angular Frontend           | ✅ Completed | [Frontend Deployment](./labs/PLAT-003-frontend-deployment.md)       |
 | PLAT-004  | Gateway API & Envoy Routing       | ✅ Completed | [Gateway API Routing](./labs/PLAT-004-gateway-api-routing.md)       |
-| PLAT-004B | Legacy Kubernetes Ingress         | ⏳ Next      | Coming next                                                         |
-| PLAT-005  | ConfigMap & Secrets               | ⬜ Planned   | —                                                                   |
-| PLAT-006  | Health Probes                     | ⬜ Planned   | —                                                                   |
-| PLAT-007  | Resources & Limits                | ⬜ Planned   | —                                                                   |
-| PLAT-008  | Rolling Updates & Rollbacks       | ⬜ Planned   | —                                                                   |
+| PLAT-004B | Legacy Kubernetes Ingress         | ✅ Completed | [Legacy Ingress Routing](./labs/PLAT-004B-legacy-ingress-routing.md) |
+| PLAT-005  | ConfigMap & Secrets               | ✅ Completed | [Configuration Management](./labs/PLAT-005-configuration-management.md) |
+| PLAT-006  | Health Probes                     | ✅ Completed | [Health Probes](./labs/PLAT-006-health-probes.md)                  |
+| PLAT-007  | Resources & Limits                | ✅ Completed | [Resource Requests & Limits](./labs/PLAT-007-cpu-request-limits.md) |
+| PLAT-008  | Rolling Updates & Rollbacks       | ⏳ Next      | — Coming next                                                       |
 | PLAT-009  | Horizontal Pod Autoscaling        | ⬜ Planned   | —                                                                   |
 | PLAT-010  | RBAC & Service Accounts           | ⬜ Planned   | —                                                                   |
 | PLAT-011  | Network Policies                  | ⬜ Planned   | —                                                                   |
@@ -255,30 +255,17 @@ The goal is to build transferable Kubernetes knowledge rather than knowledge tie
 
 # Next Lab
 
-## PLAT-004B — Legacy Kubernetes Ingress
+## PLAT-008 — Rolling Updates & Rollbacks
 
-The same application routing currently implemented with Gateway API will be reproduced using the traditional Kubernetes `Ingress` model.
+The next exercise will focus on Deployment rollout behavior and safe release recovery.
 
-Target routing:
+Target topics:
 
-```text
-/
-    -> booking-frontend
+- Rolling updates
+- Deployment revisions
+- Rollout status
+- Rollback commands
+- Image version changes
+- Release validation
 
-/api
-    -> booking-api
-```
-
-This exercise will allow a direct comparison between:
-
-```text
-IngressClass              GatewayClass
-      |                         |
-Ingress Controller          Gateway
-      |                         |
-   Ingress                  HTTPRoute
-      |                         |
-   Services                  Services
-```
-
-The objective is to understand both the model still commonly found in existing enterprise clusters and the newer Gateway API architecture.
+The objective is to understand how Kubernetes updates application workloads without downtime and how to recover quickly when a release introduces a problem.
