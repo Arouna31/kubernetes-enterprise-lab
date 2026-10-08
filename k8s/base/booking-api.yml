@@ -22,7 +22,7 @@ spec:
     spec:
       containers:
         - name: booking-api
-          image: kube-lab/booking-api:0.1.0
+          image: kube-lab/booking-api:0.2.0
 
           ports:
             - containerPort: 8080
