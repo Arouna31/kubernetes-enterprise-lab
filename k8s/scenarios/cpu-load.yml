@@ -1,0 +1,27 @@
+apiVersion: v1
+kind: Pod
+
+metadata:
+  name: booking-api-load
+  namespace: booking-dev
+
+spec:
+  restartPolicy: Never
+
+  containers:
+    - name: load-generator
+      image: busybox:1.37
+
+      command:
+        - /bin/sh
+        - -c
+        - |
+          echo "Starting load test..."
+
+          while true; do
+            for i in 1 2 3 4 5 6 7 8 9 10 11 12 13 14 15 16 17 18 19 20; do
+              wget -q -O- http://booking-api:8080/api/hotels > /dev/null &
+            done
+
+            wait
+          done
