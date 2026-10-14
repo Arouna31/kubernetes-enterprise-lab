@@ -31,9 +31,9 @@ The objective is not only to deploy workloads, but also to understand how they a
 | PLAT-005  | ConfigMap & Secrets               | ✅ Completed | [Configuration Management](./labs/PLAT-005-configuration-management.md) |
 | PLAT-006  | Health Probes                     | ✅ Completed | [Health Probes](./labs/PLAT-006-health-probes.md)                  |
 | PLAT-007  | Resources & Limits                | ✅ Completed | [Resource Requests & Limits](./labs/PLAT-007-cpu-request-limits.md) |
-| PLAT-008  | Rolling Updates & Rollbacks       | ⏳ Next      | — Coming next                                                       |
-| PLAT-009  | Horizontal Pod Autoscaling        | ⬜ Planned   | —                                                                   |
-| PLAT-010  | RBAC & Service Accounts           | ⬜ Planned   | —                                                                   |
+| PLAT-008  | Rolling Updates & Rollbacks       | ✅ Completed | [Rolling Updates & Rollbacks](./labs/PLAT-008-roolingUpdate-roolback.md) |
+| PLAT-009  | Horizontal Pod Autoscaling        | ✅ Completed | [Horizontal Pod Autoscaling](./labs/PLAT-009-hpa.md)               |
+| PLAT-010  | RBAC & Service Accounts           | ⏳ Next      | — Coming next                                                       |
 | PLAT-011  | Network Policies                  | ⬜ Planned   | —                                                                   |
 | PLAT-012  | Kustomize Environments            | ⬜ Planned   | —                                                                   |
 | PLAT-013  | GitOps with Argo CD               | ⬜ Planned   | —                                                                   |
@@ -255,17 +255,17 @@ The goal is to build transferable Kubernetes knowledge rather than knowledge tie
 
 # Next Lab
 
-## PLAT-008 — Rolling Updates & Rollbacks
+## PLAT-010 — RBAC & Service Accounts
 
-The next exercise will focus on Deployment rollout behavior and safe release recovery.
+The next exercise will focus on Kubernetes authorization and workload identities.
 
 Target topics:
 
-- Rolling updates
-- Deployment revisions
-- Rollout status
-- Rollback commands
-- Image version changes
-- Release validation
+- Role-based access control (RBAC)
+- Roles and ClusterRoles
+- RoleBindings and ClusterRoleBindings
+- ServiceAccounts
+- Least-privilege access
+- Workload identity validation
 
-The objective is to understand how Kubernetes updates application workloads without downtime and how to recover quickly when a release introduces a problem.
+The objective is to understand how Kubernetes grants scoped permissions to users and workloads, and how to validate that access is correctly enforced.
